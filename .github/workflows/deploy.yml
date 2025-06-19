@@ -14,12 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Supabase CLI
-        run: npm install supabase
-
       - name: Deploy Edge Function
         run: |
-          supabase link --project-ref ${{ secrets.PROJECT_REF }}
-          supabase functions deploy hello-world --project-ref ${{ secrets.PROJECT_REF }}
+          npx supabase link --project-ref ${{ secrets.PROJECT_REF }}
+          npx supabase functions deploy hello-world --project-ref ${{ secrets.PROJECT_REF }}
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_SUPABASE }}
